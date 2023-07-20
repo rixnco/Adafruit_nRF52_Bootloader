@@ -122,7 +122,7 @@ extern void tusb_hal_nrf_power_event(uint32_t event);
 #define DFU_DBL_RESET_MEM               0x20007F7C
 
 #define BOOTLOADER_VERSION_REGISTER     NRF_TIMER2->CC[0]
-#define DFU_SERIAL_STARTUP_INTERVAL     1000
+#define DFU_SERIAL_STARTUP_INTERVAL     2000
 
 // Allow for using reset button essentially to swap between application and bootloader.
 // This is controlled by a flag in the app and is the behavior of CPX and all Arcade boards when using MakeCode.
@@ -320,10 +320,10 @@ static void check_dfu_mode(void)
     }
 
     // Initiate an update of the firmware.
-    if (APP_ASKS_FOR_SINGLE_TAP_RESET() || uf2_dfu || serial_only_dfu)
+    if (APP_ASKS_FOR_SINGLE_TAP_RESET() || uf2_dfu )
     {
       // If USB is not enumerated in 3s (eg. because we're running on battery), we restart into app.
-       bootloader_dfu_start(_ota_dfu, 3000, true);
+       bootloader_dfu_start(_ota_dfu, 5000, true);
     }
     else
     {
