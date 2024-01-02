@@ -38,7 +38,7 @@
  *------------------------------------------------------------------*/
 #define BUTTONS_NUMBER     2
 #define BUTTON_1           18	// (DFU)
-#define BUTTON_2           27	// (FRST)
+#define BUTTON_2           26	// (FRST)
 #define BUTTON_PULL        NRF_GPIO_PIN_PULLUP
 
 /*------------------------------------------------------------------*/
